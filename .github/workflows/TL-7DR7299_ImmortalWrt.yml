@@ -102,10 +102,6 @@ jobs:
 
     - name: .config文件配置
       run: |
-        # 空间使用记录
-        echo "初始状态:" > ${{ github.workspace }}/submodule/swlplay/history/${{ env.DEVICE_NAME }}_space_usage.log
-        echo "$(date '+%Y-%m-%d %H:%M:%S') - $(du -sh . | grep -oE '[0-9.]+[A-Z]')" >> ${{ github.workspace }}/submodule/swlplay/history/${{ env.DEVICE_NAME }}_space_usage.log
-
         echo "配置编译目标为 ${{ env.TARGET }}/${{ env.SUBTARGET }}"
         # 复制预定义的配置
         cp ${{ github.workspace }}/7DR7299.config ${{ github.workspace }}/.config
@@ -132,16 +128,9 @@ jobs:
         # 2. 完整编译
         make -j$(($(nproc) + 1)) V=s
 
-        echo "编译结束时:" >> ${{ github.workspace }}/submodule/swlplay/history/${{ env.DEVICE_NAME }}_space_usage.log
-        echo "$(date '+%Y-%m-%d %H:%M:%S') - $(du -sh . | grep -oE '[0-9.]+[A-Z]')" >> ${{ github.workspace }}/submodule/swlplay/history/${{ env.DEVICE_NAME }}_space_usage.log
-
     - name: 保存配置文件
       shell: bash
       run: |        
-        # 保存带时间戳的配置文件到新目录
-        cp  ${{ github.workspace }}/.config ${{ github.workspace }}/submodule/swlplay/history/${{ env.DEVICE_NAME }}.config
-        echo "配置文件已保存：${{ github.workspace }}/submodule/swlplay/history/${{ env.DEVICE_NAME }}.config"
-
         # 为单独配置文件构建物创建目录
         mkdir -p ${{ github.workspace }}/config-artifacts  
         cp  ${{ github.workspace }}/.config ${{ github.workspace }}/config-artifacts/${{ env.DEVICE_NAME }}.config
@@ -152,8 +141,6 @@ jobs:
         ls -la ${{ github.workspace }}/bin/targets/${{ env.TARGET }}/${{ env.SUBTARGET }}/ || true
 
         ls -la ${{ github.workspace }}/config-artifacts/ || true
-
-        ls -la ${{ github.workspace }}/submodule/swlplay/history/ || true  
 
     - name: 上传配置文件
       uses: actions/upload-artifact@v7
@@ -167,47 +154,9 @@ jobs:
       uses: actions/upload-artifact@v7
       with:
         name: immortalwrt-${{ env.TARGET }}-${{ env.SUBTARGET }}
-        path: bin/targets/${{ env.TARGET }}/${{ env.SUBTARGET }}/immortalwrt-mediatek-filogic-tenda_be12-pro*
+        path: bin/targets/${{ env.TARGET }}/${{ env.SUBTARGET }}/immortalwrt-mediatek-filogic*
         retention-days: 2
         if-no-files-found: warn
-
-    - name: 提交配置文件和空间使用日志到swlplay/history目录
-      shell: bash
-      if: github.event_name != 'pull_request'   # ← 排除 PR 触发
-      run: |
-        # 配置 Git
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --global url."git@github.com:".insteadOf "https://github.com/"               # ← 保留在这里
-
-        echo "工作目录内容:"
-        ls -la || true
-
-        # 进入子模块 swlplay 目录
-        cd "${{ github.workspace }}/submodule/swlplay"
-
-        # 添加 history 目录下的所有变更
-        git add history/ || true
-
-        echo "Staged files (short status):"
-        git status --short
-
-        echo -e "\nChanges staged (stat):"
-        git diff --cached --stat
-
-        if git diff --staged --quiet; then
-            echo "配置文件无变化，跳过提交"
-        else
-            git commit -m "swlplay $(date '+%Y-%m-%d %H:%M:%S') upload Backup compiled .config & disk usage log [skip ci]"
-
-            # 拉取远程 main 分支，变基时冲突采用本地修改
-            git fetch origin
-            git rebase -X ours origin/main
-
-            # 推送到子模块自己的远程 origin 的 main 分支
-            git push origin HEAD:main
-            echo "编译成功的.config备份、磁盘空间使用日志文件已推送到子模块远程仓库"
-        fi
 
     - name: 提取完整内核版本
       id: kernel_ver
@@ -246,5 +195,4 @@ jobs:
         # 注意：overwritee_files 不会删除旧版本的不同名文件
         overwrite_files: true   # 如果有同名文件则覆盖
         files: |
-          bin/targets/${{ env.TARGET }}/${{ env.SUBTARGET }}/*kernel.bin
           bin/targets/${{ env.TARGET }}/${{ env.SUBTARGET }}/*sysupgrade.bin
