@@ -104,6 +104,8 @@ jobs:
       run: |
         echo "配置编译目标为 ${{ env.TARGET }}/${{ env.SUBTARGET }}"
         # 复制预定义的配置
+        cp ${{ github.workspace }}/swlplay/libffi/Makefile ${{ github.workspace }}/feeds/packages/libs/libffi/Makefile
+
         cp ${{ github.workspace }}/7DR7299.config ${{ github.workspace }}/.config
         make defconfig
         ls -la || true
