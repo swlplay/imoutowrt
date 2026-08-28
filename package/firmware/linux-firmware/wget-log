@@ -1,0 +1,22 @@
+--2026-08-28 05:46:47--  https://mirrors.mit.edu/kernel/linux/kernel/firmware/linux-firmware-20260810.tar.xz
+Resolving mirrors.mit.edu (mirrors.mit.edu)... 198.18.1.43
+Connecting to mirrors.mit.edu (mirrors.mit.edu)|198.18.1.43|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 648855508 (619M) [application/x-xz]
+Saving to: 'STDOUT'
+
+-                                                       8%[=========>                                                                                                             ]  53.38M  --.-KB/s    eta 7h 56m -                                                       8%[=========>                                                                                                             ]  53.38M  --.-KB/s    in 45m 0s  
+
+2026-08-28 06:31:51 (20.2 KB/s) - Read error at byte 55967744/648855508 (Connection timed out). Retrying.
+
+--2026-08-28 06:31:52--  (try: 2)  https://mirrors.mit.edu/kernel/linux/kernel/firmware/linux-firmware-20260810.tar.xz
+Connecting to mirrors.mit.edu (mirrors.mit.edu)|198.18.1.43|:443... connected.
+HTTP request sent, awaiting response... 206 Partial Content
+Length: 648855508 (619M), 592887764 (565M) remaining [application/x-xz]
+Saving to: 'STDOUT'
+
+        [ skipping 54650K ]
+ 54650K ,,,,,,                                                  8% 0.00 =0s
+
+
+Cannot write to '-' (Broken pipe).

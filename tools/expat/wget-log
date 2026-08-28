@@ -1,0 +1,28 @@
+--2026-08-28 06:24:48--  https://github.com/libexpat/libexpat/releases/download/R_2_8_2/expat-2.8.2.tar.gz
+Resolving github.com (github.com)... 198.18.0.48
+Connecting to github.com (github.com)|198.18.0.48|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://release-assets.githubusercontent.com/github-production-release-asset/80314213/f55a13fd-b946-4288-a75e-a046b6384fc6?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-08-28T07%3A04%3A58Z&rscd=attachment%3B+filename%3Dexpat-2.8.2.tar.gz&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-08-28T06%3A04%3A09Z&ske=2026-08-28T07%3A04%3A58Z&sks=b&skv=2018-11-09&sig=D8KZDTGQHx3MjBiOthO9iHUaa7ujLgK5XvGYUzN0ozU%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc4Nzg5ODU4OSwibmJmIjoxNzg3ODk4Mjg5LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.wj9Iq_MRVPws3U6uJXvywgPaAmWYqB9jr3bI0ajRc_c&response-content-disposition=attachment%3B%20filename%3Dexpat-2.8.2.tar.gz&response-content-type=application%2Foctet-stream [following]
+--2026-08-28 06:24:49--  https://release-assets.githubusercontent.com/github-production-release-asset/80314213/f55a13fd-b946-4288-a75e-a046b6384fc6?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-08-28T07%3A04%3A58Z&rscd=attachment%3B+filename%3Dexpat-2.8.2.tar.gz&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-08-28T06%3A04%3A09Z&ske=2026-08-28T07%3A04%3A58Z&sks=b&skv=2018-11-09&sig=D8KZDTGQHx3MjBiOthO9iHUaa7ujLgK5XvGYUzN0ozU%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc4Nzg5ODU4OSwibmJmIjoxNzg3ODk4Mjg5LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.wj9Iq_MRVPws3U6uJXvywgPaAmWYqB9jr3bI0ajRc_c&response-content-disposition=attachment%3B%20filename%3Dexpat-2.8.2.tar.gz&response-content-type=application%2Foctet-stream
+Resolving release-assets.githubusercontent.com (release-assets.githubusercontent.com)... 198.18.1.10
+Connecting to release-assets.githubusercontent.com (release-assets.githubusercontent.com)|198.18.1.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 818391 (799K) [application/octet-stream]
+Saving to: 'STDOUT'
+
+-                                                       6%[======>                                                                                                                ]  50.69K  --.-KB/s    eta 1h 42m -                                                       6%[======>                                                                                                                ]  50.69K  --.-KB/s    in 6m 57s  
+
+2026-08-28 06:31:51 (124 B/s) - Read error at byte 51908/818391 (Connection timed out). Retrying.
+
+--2026-08-28 06:31:52--  (try: 2)  https://release-assets.githubusercontent.com/github-production-release-asset/80314213/f55a13fd-b946-4288-a75e-a046b6384fc6?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-08-28T07%3A04%3A58Z&rscd=attachment%3B+filename%3Dexpat-2.8.2.tar.gz&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-08-28T06%3A04%3A09Z&ske=2026-08-28T07%3A04%3A58Z&sks=b&skv=2018-11-09&sig=D8KZDTGQHx3MjBiOthO9iHUaa7ujLgK5XvGYUzN0ozU%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc4Nzg5ODU4OSwibmJmIjoxNzg3ODk4Mjg5LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.wj9Iq_MRVPws3U6uJXvywgPaAmWYqB9jr3bI0ajRc_c&response-content-disposition=attachment%3B%20filename%3Dexpat-2.8.2.tar.gz&response-content-type=application%2Foctet-stream
+Connecting to release-assets.githubusercontent.com (release-assets.githubusercontent.com)|198.18.1.10|:443... connected.
+HTTP request sent, awaiting response... 206 Partial Content
+Length: 818391 (799K), 766483 (749K) remaining [application/octet-stream]
+Saving to: 'STDOUT'
+
+        [ skipping 50K ]
+    50K
+    50K                                                         6% 0.00 =0.1s
+
+
+Cannot write to '-' (Broken pipe).
