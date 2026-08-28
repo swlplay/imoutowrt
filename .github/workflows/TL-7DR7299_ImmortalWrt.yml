@@ -16,7 +16,7 @@ env:
 
 jobs:
  check-and-build:
-  runs-on: ubuntu-latest
+  runs-on: ubuntu-26.04
   permissions:
     contents: write          # ← 保留在这里
 

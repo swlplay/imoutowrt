@@ -1,0 +1,22 @@
+--2026-08-28 06:24:35--  https://sourceware.org/elfutils/ftp/0.192/elfutils-0.192.tar.bz2
+Resolving sourceware.org (sourceware.org)... 198.18.1.12
+Connecting to sourceware.org (sourceware.org)|198.18.1.12|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 11913897 (11M) [application/x-bzip2]
+Saving to: 'STDOUT'
+
+-                                                       2%[=>                                                                                                                     ] 271.56K  --.-KB/s    eta 5h 1m  -                                                       2%[=>                                                                                                                     ] 271.56K  --.-KB/s    in 7m 12s  
+
+2026-08-28 06:31:51 (644 B/s) - Read error at byte 278076/11913897 (Connection timed out). Retrying.
+
+--2026-08-28 06:31:52--  (try: 2)  https://sourceware.org/elfutils/ftp/0.192/elfutils-0.192.tar.bz2
+Connecting to sourceware.org (sourceware.org)|198.18.1.12|:443... connected.
+HTTP request sent, awaiting response... 206 Partial Content
+Length: 11913897 (11M), 11635821 (11M) remaining [application/x-bzip2]
+Saving to: 'STDOUT'
+
+        [ skipping 250K ]
+   250K ,,,,,,,,,, ,,,,,,,,,, ,                                 2% 0.00 =0s
+
+
+Cannot write to '-' (Broken pipe).

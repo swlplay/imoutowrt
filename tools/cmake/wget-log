@@ -1,0 +1,22 @@
+--2026-08-28 06:24:40--  https://cmake.org/files/v4.4/cmake-4.4.0.tar.gz
+Resolving cmake.org (cmake.org)... 198.18.1.59
+Connecting to cmake.org (cmake.org)|198.18.1.59|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 13275398 (13M) [application/x-gzip]
+Saving to: 'STDOUT'
+
+-                                                       1%[>                                                                                                                      ] 179.50K  --.-KB/s    eta 8h 27m -                                                       1%[>                                                                                                                      ] 179.50K  --.-KB/s    in 7m 7s   
+
+2026-08-28 06:31:51 (430 B/s) - Read error at byte 183813/13275398 (Connection timed out). Retrying.
+
+--2026-08-28 06:31:52--  (try: 2)  https://cmake.org/files/v4.4/cmake-4.4.0.tar.gz
+Connecting to cmake.org (cmake.org)|198.18.1.59|:443... connected.
+HTTP request sent, awaiting response... 206 Partial Content
+Length: 13275398 (13M), 13091585 (12M) remaining [application/x-gzip]
+Saving to: 'STDOUT'
+
+        [ skipping 150K ]
+   150K ,,,,,,,,,, ,,,,,,,,,, ,,,,,,,,,                         1% 0.00 =0s
+
+
+Cannot write to '-' (Broken pipe).

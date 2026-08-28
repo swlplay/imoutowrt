@@ -1,0 +1,22 @@
+--2026-08-28 06:04:33--  https://mirrors.mit.edu/kernel/linux/kernel/v6.x/linux-6.18.44.tar.xz
+Resolving mirrors.mit.edu (mirrors.mit.edu)... 198.18.1.43
+Connecting to mirrors.mit.edu (mirrors.mit.edu)|198.18.1.43|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 154583504 (147M) [application/x-xz]
+Saving to: 'STDOUT'
+
+-                                                      23%[===========================>                                                                                           ]  34.86M  --.-KB/s    eta 88m 2s -                                                      23%[===========================>                                                                                           ]  34.86M  --.-KB/s    in 27m 16s 
+
+2026-08-28 06:31:51 (21.8 KB/s) - Read error at byte 36552704/154583504 (Connection timed out). Retrying.
+
+--2026-08-28 06:31:52--  (try: 2)  https://mirrors.mit.edu/kernel/linux/kernel/v6.x/linux-6.18.44.tar.xz
+Connecting to mirrors.mit.edu (mirrors.mit.edu)|198.18.1.43|:443... connected.
+HTTP request sent, awaiting response... 206 Partial Content
+Length: 154583504 (147M), 118030800 (113M) remaining [application/x-xz]
+Saving to: 'STDOUT'
+
+        [ skipping 35650K ]
+ 35650K ,,,,,,,,,, ,,,,,,,,,, ,,,,,,,,,, ,,,,,,,,,, ,,,,,,     23% 0.00 =0s
+
+
+Cannot write to '-' (Broken pipe).
