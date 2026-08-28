@@ -64,6 +64,7 @@ jobs:
 
         echo "删除目录"
         sudo swapoff -a
+        shopt -s nullglob
         sudo rm -rf /opt/hostedtoolcache /swapfile /usr/lib/jvm /usr/local/.ghcup /usr/local/aws-cli /usr/local/aws-sam-cli /usr/local/julia* /usr/local/lib/android \
           /usr/local/share/chromium /usr/local/share/powershell /usr/share/az* /usr/share/dotnet /usr/share/miniconda /usr/share/swift
 
