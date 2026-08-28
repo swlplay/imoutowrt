@@ -54,53 +54,25 @@ jobs:
 
     - name: 删除目录扩大可用空间
       run: |
+        # 开启 nullglob 让通配符无匹配时展开为空，避免 du 和 rm 报错
+        shopt -s nullglob
+
         echo "删除各目录的空间明细"
         sudo du -sh /opt/hostedtoolcache /swapfile /usr/lib/jvm /usr/local/.ghcup /usr/local/aws-cli /usr/local/aws-sam-cli /usr/local/julia* /usr/local/lib/android \
-          /usr/local/share/chromium /usr/local/share/powershell /usr/share/az* /usr/share/dotnet /usr/share/miniconda /usr/share/swift 2>/dev/null
+          /usr/local/share/chromium /usr/local/share/powershell /usr/share/az* /usr/share/dotnet /usr/share/miniconda /usr/share/swift 2>/dev/null || true
 
         echo "删除目录总空间"
         sudo du -ch /opt/hostedtoolcache /swapfile /usr/lib/jvm /usr/local/.ghcup /usr/local/aws-cli /usr/local/aws-sam-cli /usr/local/julia* /usr/local/lib/android \
-          /usr/local/share/chromium /usr/local/share/powershell /usr/share/az* /usr/share/dotnet /usr/share/miniconda /usr/share/swift 2>/dev/null | tail -1
+          /usr/local/share/chromium /usr/local/share/powershell /usr/share/az* /usr/share/dotnet /usr/share/miniconda /usr/share/swift 2>/dev/null | tail -1 || true
 
-        echo "删除目录"
         echo "关闭交换分区"
         sudo swapoff -a || true
 
-        # 定义所有固定路径（不包括通配符）
-        paths_to_delete=(
-          "/opt/hostedtoolcache"
-          "/swapfile"
-          "/usr/lib/jvm"
-          "/usr/local/.ghcup"
-          "/usr/local/aws-cli"
-          "/usr/local/aws-sam-cli"
-          "/usr/local/lib/android"
-          "/usr/local/share/chromium"
-          "/usr/local/share/powershell"
-          "/usr/share/dotnet"
-          "/usr/share/miniconda"
-          "/usr/share/swift"
-        )
-
-        # 处理通配符：/usr/local/julia* 和 /usr/share/az*
-        for pattern in "/usr/local/julia*" "/usr/share/az*"; do
-          # 使用 for 循环展开通配符，若无可匹配则跳过（nullglob 或 shopt -s nullglob 可安全使用）
-          for path in $pattern; do
-            if [ -e "$path" ]; then
-              paths_to_delete+=("$path")
-            fi
-          done
-        done
-
-        echo "开始删除目录（共 ${#paths_to_delete[@]} 个）"
-        for path in "${paths_to_delete[@]}"; do
-          if [ -e "$path" ]; then
-            echo "删除 $path"
-            sudo rm -rf "$path"
-          else
-            echo "跳过（不存在）: $path"
-          fi
-        done
+        echo "删除目录"
+        sudo swapoff -a
+        shopt -s nullglob
+        sudo rm -rf /opt/hostedtoolcache /swapfile /usr/lib/jvm /usr/local/.ghcup /usr/local/aws-cli /usr/local/aws-sam-cli /usr/local/julia* /usr/local/lib/android \
+          /usr/local/share/chromium /usr/local/share/powershell /usr/share/az* /usr/share/dotnet /usr/share/miniconda /usr/share/swift || true
 
         echo "清理完成"
 
