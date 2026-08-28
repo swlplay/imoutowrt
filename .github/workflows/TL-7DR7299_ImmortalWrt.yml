@@ -63,10 +63,46 @@ jobs:
           /usr/local/share/chromium /usr/local/share/powershell /usr/share/az* /usr/share/dotnet /usr/share/miniconda /usr/share/swift 2>/dev/null | tail -1
 
         echo "删除目录"
-        sudo swapoff -a
-        shopt -s nullglob
-        sudo rm -rf /opt/hostedtoolcache /swapfile /usr/lib/jvm /usr/local/.ghcup /usr/local/aws-cli /usr/local/aws-sam-cli /usr/local/julia* /usr/local/lib/android \
-          /usr/local/share/chromium /usr/local/share/powershell /usr/share/az* /usr/share/dotnet /usr/share/miniconda /usr/share/swift
+        echo "关闭交换分区"
+        sudo swapoff -a || true
+
+        # 定义所有固定路径（不包括通配符）
+        paths_to_delete=(
+          "/opt/hostedtoolcache"
+          "/swapfile"
+          "/usr/lib/jvm"
+          "/usr/local/.ghcup"
+          "/usr/local/aws-cli"
+          "/usr/local/aws-sam-cli"
+          "/usr/local/lib/android"
+          "/usr/local/share/chromium"
+          "/usr/local/share/powershell"
+          "/usr/share/dotnet"
+          "/usr/share/miniconda"
+          "/usr/share/swift"
+        )
+
+        # 处理通配符：/usr/local/julia* 和 /usr/share/az*
+        for pattern in "/usr/local/julia*" "/usr/share/az*"; do
+          # 使用 for 循环展开通配符，若无可匹配则跳过（nullglob 或 shopt -s nullglob 可安全使用）
+          for path in $pattern; do
+            if [ -e "$path" ]; then
+              paths_to_delete+=("$path")
+            fi
+          done
+        done
+
+        echo "开始删除目录（共 ${#paths_to_delete[@]} 个）"
+        for path in "${paths_to_delete[@]}"; do
+          if [ -e "$path" ]; then
+            echo "删除 $path"
+            sudo rm -rf "$path"
+          else
+            echo "跳过（不存在）: $path"
+          fi
+        done
+
+        echo "清理完成"
 
     - name: 安装编译依赖
       run: |
