@@ -111,7 +111,7 @@ jobs:
 
     - name: .config文件配置
       run: |
-        echo "配置编译目标为 ${{ env.CI_TARGET }}/${{ env.SUBTARGET }}"
+        echo "配置编译目标为 ${{ env.CI_TARGET }}/${{ env.CI_SUBTARGET }}"
         # 复制预定义的配置
         ls -la ${{ github.workspace }}/feeds/packages/libs/libffi/ || true
 
