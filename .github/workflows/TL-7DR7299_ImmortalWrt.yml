@@ -113,19 +113,11 @@ jobs:
       run: |
         echo "配置编译目标为 ${{ env.CI_TARGET }}/${{ env.CI_SUBTARGET }}"
         # 复制预定义的配置
-        ls -la ${{ github.workspace }}/feeds/packages/libs/libffi/ || true
-
-        cp ${{ github.workspace }}/swlplay/libffi/Makefile ${{ github.workspace }}/feeds/packages/libs/libffi/Makefile
-
-        ls -la ${{ github.workspace }}/feeds/packages/libs/libffi/ || true
-
         cp -r ${{ github.workspace }}/swlplay/apk/* ${{ github.workspace }}/package/feeds/
 
         ls -la ${{ github.workspace }}/package/feeds/ || true
 
         cp ${{ github.workspace }}/7DR7299.config ${{ github.workspace }}/.config
-
-        ls -la ${{ github.workspace }}/ || true       
 
         make defconfig
 
@@ -218,4 +210,8 @@ jobs:
         # 注意：overwritee_files 不会删除旧版本的不同名文件
         overwrite_files: true   # 如果有同名文件则覆盖
         files: |
-          bin/targets/${{ env.CI_TARGET }}/${{ env.CI_SUBTARGET }}/*sysupgrade.bin
+          bin/targets/${{ env.CI_TARGET }}/${{ env.CI_SUBTARGET }}/*uboot.fip
+          bin/targets/${{ env.CI_TARGET }}/${{ env.CI_SUBTARGET }}/*recovery.itb
+          bin/targets/${{ env.CI_TARGET }}/${{ env.CI_SUBTARGET }}/*preloader.bin
+          bin/targets/${{ env.CI_TARGET }}/${{ env.CI_SUBTARGET }}/*sysupgrade.itb
+          bin/targets/${{ env.CI_TARGET }}/${{ env.CI_SUBTARGET }}/*.manifest
