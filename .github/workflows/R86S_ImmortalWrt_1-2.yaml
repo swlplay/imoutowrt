@@ -122,8 +122,8 @@ jobs:
         run: |
           set -ex
           echo "重置immortalwrt仓库"
-          git fetch origin main
-          git reset --hard origin/main   # 把本地 main 完全指向远程 main
+          git fetch origin master
+          git reset --hard origin/master   # 把本地 main 完全指向远程 main
           echo "开始更新feeds"
           ./scripts/feeds update -a
           ./scripts/feeds install -a
