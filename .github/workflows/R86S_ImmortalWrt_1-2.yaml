@@ -449,7 +449,7 @@ jobs:
         # working-directory: source
         run: |
           echo "=== 构建node.js==="
-          make package/node/install -j$(nproc) V=s
+          make package/feeds/packages/node/install -j$(nproc) V=s
 
       - name: 下载所有源代码
         # working-directory: source
