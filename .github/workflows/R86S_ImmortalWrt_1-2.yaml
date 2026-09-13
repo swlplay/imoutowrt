@@ -132,7 +132,6 @@ jobs:
         run: |
           echo "配置编译目标为 ${{ env.CI_TARGET }}/${{ env.CI_SUBTARGET }}"
           # 复制预定义的配置
-          ls -la ${{ github.workspace }}/submodule/swlplay/config/ || true
           cp ${{ github.workspace }}/${{ env.CI_DEVICE_NAME }}.config ${{ github.workspace }}/.config
           ls -la ${{ github.workspace }}/ || true                      
           make defconfig
@@ -141,8 +140,15 @@ jobs:
       - name: 构建工具链
         # working-directory: source
         run: |
-          echo "=== 构建工具链==="     
-          make toolchain/compile -j$(nproc) V=s
+          echo "=== 构建工具链==="
+          make tools/install -j$(nproc) V=s
+
+          make toolchain/install -j$(nproc) V=s
+
+          make target/compile -j$(nproc) V=s
+
+          # make toolchain/compile -j$(nproc) V=s
+
 
       - name: 清理 build_dir 中的旧版本目录（支持白名单）
         run: |
@@ -434,7 +440,7 @@ jobs:
         # working-directory: source
         run: |
           echo "=== 构建node.js==="
-          make package/node/compile -j$(nproc) V=s
+          make package/node/install -j$(nproc) V=s
 
       - name: 下载所有源代码
         # working-directory: source
